@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.qze_center {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.qze_container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: scroll;
+}
+
+.qze_line_number {
+  width: 4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-right: 2px solid grey;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.qze_line_num_caps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 1rem;
+  display: block;
+  height: 21px;
+}
+
+.qze_line_content {
+  position: absolute;
+  top: 0;
+}
+
+.qze_editor_field {
+  position: relative;
+  cursor: text;
+}
+
+.qze_line_cont_fld {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: block;
+  height: 21px;
+}
+
+.qze_inline_block {
+  display: inline-block;
+}
+
+.qze_cursor {
+  position: absolute;
+  overflow: hidden;
+}
+
+.qze_cursor span {
+  border: 0.8px solid red;
+}
+
+.qze_font_md {
+  line-height: 21px;
+  font-size: 12px;
+}
+
+.qze_font_lg {
+  line-height: 21px;
+  font-size: 15px;
+}
+
+.qze_back_black {
+  background: #2b2b2b;
+}
+
+.qze_back_dkgray {
+  background: #3f3f3f;
+}
+
+.qze_font_white {
+  color: white;
+}
+
+.qze_font_silver {
+  color: #bebebe;
+}
+/*# sourceMappingURL=Qz_Custom_Editor.css.map */

@@ -1,0 +1,51 @@
+  @font-face {
+    font-family: FiraCode;
+    src: url(Fira_Code/FiraCode-VariableFont_wght.ttf);
+  }
+  
+  @font-face {
+    font-family: SourceCodePro;
+    src: url(Source_Code_Pro/SourceCodePro-Regular.ttf);
+  }
+
+  @font-face {
+    font-family: SourceCodeProBold;
+    src: url(Source_Code_Pro/SourceCodePro-Bold.ttf);
+  }
+
+  @font-face {
+    font-family: SourceCodeProLight;
+    src: url(Source_Code_Pro/SourceCodePro-Light.ttf);
+  }
+
+  @font-face {
+    font-family: SourceCodeProMedium;
+    src: url(Source_Code_Pro/SourceCodePro-Medium.ttf);
+  }
+
+  @font-face {
+    font-family: SourceCodeProSemiBold;
+    src: url(Source_Code_Pro/SourceCodePro-SemiBold.ttf);
+  }
+  
+
+
+  .font-srcCodePro{
+    font-family: SourceCodePro !important;
+  }
+  .font-srcCodeProBold{
+    font-family: SourceCodeProBold !important;
+  }
+  .font-srcCodeProLight{
+    font-family: SourceCodeProLight !important;
+  }
+  .font-srcCodeProMedium{
+    font-family: SourceCodeProMedium !important;
+  }
+  .font-srcCodeProSemiBold{
+    font-family: SourceCodeProSemiBold !important;
+  }
+  .font-firaCode{
+    font-family: FiraCode !important;
+  }
+  

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Qz Custom Editor</title>
+    <link rel="stylesheet" href="../assets/fonts/fonts.css">
+    <link rel="stylesheet" href="../assets/editor/Qz_Custom_Editor.css">
+    <link rel="stylesheet" href="../assets/css/C_StyleSheets/qz_c_1.css">
+</head>
+
+<body>
+    <div class="qze_container qze_back_black" id="qze_editor_container">
+        <div class="qze_line_number qze_back_dkgray qze_font_silver qze_inline_block font-firaCode" 
+            id="qze_line_number">
+            <div id="qze_row_count">
+                <div class="qze_line_num_caps qze_font_md qze_font_white">
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
+        <div class="qze_line_content qze_font_white qze_inline_block"
+            id="qze_line_content">
+            <div class="qze_editor_field">
+                <pre id="qze_editor_row" class="font-srcCodePro"></pre>
+            </div>
+            <span class="qze_cursor" id="qze_cursor" style="visibility: hidden; left: 0; top: 0;
+                height: 19px; width: 1.6px;"><span></span></span>
+        </div>
+    </div> 
+
+
+    <script src="../assets/general/message_error.js"></script>
+    <script src="../assets/translations/advanceTranslate.js"></script>
+    <script src="Qz_Custom_Editor.js"></script>
+    <script src="../assets/general/file_handling.js"></script>
+    <script src="../assets/general/file_handlingIPC.js"></script>
+
+</body>
+
+</html>

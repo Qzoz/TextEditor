@@ -1,0 +1,39 @@
+.qze_c_main{
+    color: rgb(255, 109, 109);
+}
+
+.qze_c_preprocess{
+    color: rgb(138, 11, 197);
+}
+
+.qze_c_keywords{
+    color: rgb(32, 123, 197);
+}
+
+.qze_c_functions{
+    color: rgb(220, 238, 55);
+}
+
+.qze_c_strings{
+    color: rgb(214, 140, 70);
+}
+
+.qze_c_constants{
+    color: rgb(142, 233, 142);
+}
+
+.qze_c_identifiers{
+    color: rgb(125, 245, 245);
+}
+
+.qze_c_operators{
+    color: rgb(132, 118, 255);
+}
+
+.qze_c_others{
+    color: rgb(197, 197, 197);
+}
+
+.qze_c_comments{
+    color: rgb(46, 138, 76);
+}

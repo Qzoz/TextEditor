@@ -1,0 +1,5 @@
+In order to make translator Create a function named
+
+========>> { getUpdatedField ( line ) }
+
+====>> line is the input string to be converted to a language (eg:- C, HTML, Java, etc);

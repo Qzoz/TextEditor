@@ -1,0 +1,100 @@
+$colors:(
+    whiteC: rgb(255, 255, 255),
+    silverC: rgb(190, 190, 190),
+    greydarkC: rgb(63, 63, 63),
+    blackC: rgb(43, 43, 43),
+    greyC: grey
+);
+
+@function getColor($colorKey){
+    @return map-get($colors, $colorKey );
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+.qze_center{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.qze_container{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: scroll;
+}
+.qze_line_number{
+    width: 4rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 2px solid getColor(greyC);
+    user-select: none;
+}
+.qze_line_num_caps{
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    display:block;
+    height: 21px;
+}
+.qze_line_content{
+    position: absolute;
+    top: 0;
+}
+.qze_editor_field{
+    position: relative;
+    cursor: text;
+}
+.qze_line_cont_fld{
+    display: flex;
+    align-items: center;
+    display:block;
+    height: 21px;
+}
+
+.qze_inline_block{
+    display: inline-block;
+}
+
+
+.qze_cursor{
+    position: absolute;
+    overflow: hidden;
+}
+.qze_cursor span{
+    border: 0.8px solid red;
+}
+
+.qze_font_md{
+    line-height: 21px;
+    font-size: 12px;
+}
+.qze_font_lg{
+    line-height: 21px;
+    font-size: 15px;
+}
+
+.qze_back_black{
+    background: getColor(blackC);
+}
+.qze_back_dkgray{
+    background: getColor(greydarkC);
+}
+.qze_font_white{
+    color: getColor(whiteC);
+}
+.qze_font_silver{
+    color: getColor(silverC);
+}
