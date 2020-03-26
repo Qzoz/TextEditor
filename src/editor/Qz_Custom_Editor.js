@@ -502,7 +502,10 @@ function breakLineAtCol(col) {
 }
 
 function updateField(row, lineWiseFlag) {
-    initComments(editorContent);
+    try {
+        initComments(editorContent);
+    } catch (err) {
+    }
     if (row < rowCount) {
         if (lineWiseFlag) {
             getCurrentRowDiv(row).children[0].innerHTML = getUpdatedField(editorContent[row], row);
