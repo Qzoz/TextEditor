@@ -1,7 +1,7 @@
 const electron = require('electron')
 const path = require('path')
 const url = require('url')
-const { app, BrowserWindow, Menu, dialog, ipcMain } = electron;
+const { app, BrowserWindow, Menu, dialog, ipcMain, globalShortcut } = electron;
 
 let win;
 
@@ -10,7 +10,7 @@ const fileFilters = [
     { name: 'C', extensions: ['c'] },
     { name: 'HTML', extensions: ['html', 'htm'] },
     { name: 'Text', extensions: ['txt'] }
-  ]
+]
 
 const windowTemplate = {
     width: 1024,
@@ -27,8 +27,9 @@ const menuTemplate = [
             {
                 label: 'New',
                 click() {
-                    console.log('New File... Requested')
-                }
+                    win.webContents.reload();
+                },
+                accelerator: 'CommandOrControl + N'
             },
             {
                 label: 'Open',
@@ -51,12 +52,18 @@ const menuTemplate = [
                 },
                 accelerator: 'CommandOrControl + Shift + S'
             },
+            {
+                label: 'Close',
+                click() {
+                    win.webContents.reload();
+                }
+            },
             { type: 'separator' },
             {
                 label: 'Settings',
                 submenu: [{
                     label: "Compiler Paths",
-                    click () {
+                    click() {
                         openNewTempWindow('compPath', ['Compiler Path Editor', 'compilerPaths.json']);
                     }
                 }]
@@ -68,6 +75,53 @@ const menuTemplate = [
                     app.quit();
                 },
                 accelerator: 'CommandOrControl + Q'
+            },
+        ]
+    },
+    {
+        label: '&Edit',
+        submenu: [
+            {
+                label: 'Select All',
+                click() {
+                    sendData('edit', 'select-all');
+                },
+                accelerator: 'CommandOrControl + A'
+            },
+            {
+                label: 'Cut',
+                click() {
+                    sendData('edit', 'cut');
+                },
+                accelerator: 'CommandOrControl + X'
+            },
+            {
+                label: 'Copy',
+                click() {
+                    sendData('edit', 'copy');
+                },
+                accelerator: 'CommandOrControl + C'
+            },
+            {
+                label: 'Paste',
+                click() {
+                    sendData('edit', 'paste');
+                },
+                accelerator: 'CommandOrControl + V'
+            },
+            {
+                label: 'Undo',
+                click() {
+                    sendData('edit', 'undo');
+                },
+                accelerator: 'CommandOrControl + Z'
+            },
+            {
+                label: 'Redo',
+                click() {
+                    sendData('edit', 'redo');
+                },
+                accelerator: 'CommandOrControl + R'
             },
         ]
     },
@@ -129,12 +183,12 @@ const menuTemplate = [
 
 function createWindow() {
     win = new BrowserWindow(windowTemplate);
-    
+
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'src/editor/Qz_Custom_Editor.html'),
         protocol: 'file:',
         slashes: true
-    }))
+    }));
 
     Menu.setApplicationMenu(Menu.buildFromTemplate(menuTemplate));
 
@@ -147,6 +201,48 @@ app.whenReady().then(createWindow)
 app.on('window-all-closed', () => {
     app.quit()
 })
+
+app.on('browser-window-focus', () => {
+    globalShortcut.register('CommandOrControl + A', () => {
+        sendData('edit', 'select-all');
+    })
+    globalShortcut.register('CommandOrControl + X', () => {
+        sendData('edit', 'cut');
+    })
+    globalShortcut.register('CommandOrControl + C', () => {
+        sendData('edit', 'copy');
+    })
+    globalShortcut.register('CommandOrControl + V', () => {
+        sendData('edit', 'paste');
+    })
+    globalShortcut.register('CommandOrControl + Z', () => {
+        sendData('edit', 'undo');
+    })
+    globalShortcut.register('CommandOrControl + R', () => {
+        sendData('edit', 'redo');
+    })
+})
+
+app.on('browser-window-blur', () => {
+    globalShortcut.unregister('CommandOrControl + A', () => {
+        sendData('edit', 'select-all');
+    })
+    globalShortcut.unregister('CommandOrControl + X', () => {
+        sendData('edit', 'cut');
+    })
+    globalShortcut.unregister('CommandOrControl + C', () => {
+        sendData('edit', 'copy');
+    })
+    globalShortcut.unregister('CommandOrControl + V', () => {
+        sendData('edit', 'paste');
+    })
+    globalShortcut.unregister('CommandOrControl + Z', () => {
+        sendData('edit', 'undo');
+    })
+    globalShortcut.unregister('CommandOrControl + R', () => {
+        sendData('edit', 'redo');
+    })
+});
 
 function openFile() {
     dialog.showOpenDialog(win, {
@@ -210,10 +306,10 @@ function openNewTempWindow(type, messages) {
             width: 600,
             center: true,
             webPreferences: {
-                nodeIntegration:true
+                nodeIntegration: true
             }
         });
-        winTemp.on('close', ()=> {winTemp = null;});
+        winTemp.on('close', () => { winTemp = null; });
         winTemp.loadURL(url.format({
             pathname: 'src/editor/Qz_Custom_Editor.html',
             protocol: 'file:',
@@ -224,9 +320,14 @@ function openNewTempWindow(type, messages) {
             click() {
                 winTemp.webContents.executeJavaScript('saveFileWithSave();');
             }
+        },{
+            label: "Paste",
+            click() {
+                winTemp.webContents.executeJavaScript('pasteTheClipBoardText();');
+            }
         }]));
         winTemp.setTitle("Compiler Paths");
-        winTemp.webContents.executeJavaScript('readAndDisplayFile(\"'+messages[1]+'\");');
+        winTemp.webContents.executeJavaScript('readAndDisplayFile(\"' + messages[1] + '\");');
         winTemp.show();
     }
 }
@@ -238,4 +339,3 @@ function showInfoMessage(infoMessage) {
 function showErrorMessage(fromFunc, errMessage) {
     dialog.showErrorBox('Error in -> ' + fromFunc, errMessage.toString());
 }
-
