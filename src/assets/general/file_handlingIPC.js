@@ -45,3 +45,24 @@ ipcRenderer.on('file', (e, args) => {
         showErrorMessage('file-open', error);
     }
 });
+
+ipcRenderer.on('edit', (e, args)=>{
+    if (args[0] == 'select-all') {
+        selectAllText();
+    }
+    if (args[0] == 'cut') {
+        cutTheSelectedText();
+    }
+    if (args[0] == 'copy') {
+        copyTheSelectedText();
+    }
+    if (args[0] == 'paste') {
+        pasteTheClipBoardText();
+    }
+    if (args[0] == 'undo') {
+        undoTheText();
+    }
+    if (args[0] == 'redo') {
+        redoTheText();
+    }
+});
