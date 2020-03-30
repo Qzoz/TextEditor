@@ -52,6 +52,10 @@ html, body {
 .qze_line_content {
   position: absolute;
   top: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .qze_editor_field {
@@ -68,6 +72,7 @@ html, body {
           align-items: center;
   display: block;
   height: 21px;
+  position: relative;
 }
 
 .qze_inline_block {
@@ -107,5 +112,20 @@ html, body {
 
 .qze_font_silver {
   color: #bebebe;
+}
+
+.qze_sel_txt_bg {
+  background-color: #3f3f3f;
+}
+
+.qze_sel_txt_bl {
+  display: inline-block;
+  height: 21px;
+  padding: 0;
+  margin: 0;
+  border-radius: 2.5px;
+  background-color: #bdbdbd;
+  position: absolute;
+  opacity: 0.25;
 }
 /*# sourceMappingURL=Qz_Custom_Editor.css.map */
