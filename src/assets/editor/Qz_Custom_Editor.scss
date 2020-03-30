@@ -2,6 +2,7 @@ $colors:(
     whiteC: rgb(255, 255, 255),
     silverC: rgb(190, 190, 190),
     greydarkC: rgb(63, 63, 63),
+    greylightC: rgb(189, 189, 189),
     blackC: rgb(43, 43, 43),
     greyC: grey
 );
@@ -52,6 +53,7 @@ html, body{
 .qze_line_content{
     position: absolute;
     top: 0;
+    user-select: none;
 }
 .qze_editor_field{
     position: relative;
@@ -62,6 +64,7 @@ html, body{
     align-items: center;
     display:block;
     height: 21px;
+    position: relative;
 }
 
 .qze_inline_block{
@@ -97,4 +100,19 @@ html, body{
 }
 .qze_font_silver{
     color: getColor(silverC);
+}
+.qze_sel_txt_bg {
+    background-color: getColor(greydarkC);
+}
+
+
+.qze_sel_txt_bl {
+    display: inline-block;
+    height: 21px;
+    padding: 0;
+    margin: 0;
+    border-radius: 2.5px;
+    background-color: getColor(greylightC);
+    position: absolute;
+    opacity: 0.25;
 }
