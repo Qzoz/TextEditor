@@ -5,4 +5,4 @@ Made Using: HTML, CSS, Javascript and Electron
 
 ![Text Editor](https://github.com/Qzoz/TextEditor/blob/master/editor_demo/text_editor.png)
 
-<img src="https://github.com/Qzoz/TextEditor/blob/master/editor_demo/text_editor.png" alt="Text Editor" width="200">
+<img src="https://github.com/Qzoz/TextEditor/blob/master/editor_demo/text_editor.png" alt="Text Editor" width="400">
